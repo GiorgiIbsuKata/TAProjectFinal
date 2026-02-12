@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="AutomationFramework" parallel="classes" thread-count="4">
+
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+            </listeners>
+
+    <test name="UI Tests">
+        <packages>
+            <package name="ui.tests"/>
+        </packages>
+    </test>
+
+    <test name="API Tests">
+        <packages>
+            <package name="api.tests"/>
+        </packages>
+    </test>
+
+</suite>
