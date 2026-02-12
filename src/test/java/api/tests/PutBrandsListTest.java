@@ -10,16 +10,16 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class PostProductsListTest extends BaseApiTest {
+public class PutBrandsListTest extends BaseApiTest {
 
-    @Test(priority = 2, description = "API 2: POST to all products list")
+    @Test(priority = 4, description = "API 4: PUT to all brands list")
     @Severity(SeverityLevel.NORMAL)
-    @Description("POST to /productsList is not supported. Verify JSON body contains responseCode 405 and correct message.")
-    public void postToAllProductsList() {
+    @Description("PUT to /brandsList is not supported. Verify JSON body contains responseCode 405 and correct message.")
+    public void putToAllBrandsList() {
 
         Response response = given()
                 .when()
-                .post("/productsList")
+                .put("/brandsList")
                 .then()
                 .statusCode(200)
                 .extract()

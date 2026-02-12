@@ -10,16 +10,16 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class GetAllProductsTest extends BaseApiTest {
+public class GetAllBrandsTest extends BaseApiTest {
 
-    @Test(priority = 1, description = "API 1: GET all products list")
+    @Test(priority = 3, description = "API 3: GET all brands list")
     @Severity(SeverityLevel.NORMAL)
-    @Description("Verify that GET /productsList returns 200 and contains a list of products.")
-    public void getAllProducts() {
+    @Description("Verify that GET /brandsList returns 200 and contains a list of brands.")
+    public void getAllBrands() {
 
         Response response = given()
                 .when()
-                .get("/productsList")
+                .get("/brandsList")
                 .then()
                 .statusCode(200)
                 .extract()
@@ -28,6 +28,6 @@ public class GetAllProductsTest extends BaseApiTest {
         JsonPath js = new JsonPath(response.asString());
 
         Assert.assertEquals(js.getInt("responseCode"), 200, "Response code should be 200");
-        Assert.assertNotNull(js.getList("products"), "Products list should not be null");
+        Assert.assertNotNull(js.getList("brands"), "Brands list should not be null");
     }
 }

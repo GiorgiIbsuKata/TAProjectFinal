@@ -10,16 +10,16 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class PostProductsListTest extends BaseApiTest {
+public class DeleteVerifyLoginTest extends BaseApiTest {
 
-    @Test(priority = 2, description = "API 2: POST to all products list")
+    @Test(priority = 9, description = "API 9: DELETE to verify login")
     @Severity(SeverityLevel.NORMAL)
-    @Description("POST to /productsList is not supported. Verify JSON body contains responseCode 405 and correct message.")
-    public void postToAllProductsList() {
+    @Description("Verify that DELETE /verifyLogin is not supported and returns responseCode 405 with correct error message.")
+    public void deleteVerifyLogin() {
 
         Response response = given()
                 .when()
-                .post("/productsList")
+                .delete("/verifyLogin")
                 .then()
                 .statusCode(200)
                 .extract()
@@ -27,7 +27,11 @@ public class PostProductsListTest extends BaseApiTest {
 
         JsonPath jsonPath = getJsonFromHtmlWrappedResponse(response);
 
-        Assert.assertEquals(jsonPath.getInt("responseCode"), 405);
-        Assert.assertEquals(jsonPath.getString("message"), "This request method is not supported.");
+        Assert.assertEquals(jsonPath.getInt("responseCode"), 405, "Response code should be 405");
+        Assert.assertEquals(
+                jsonPath.getString("message"),
+                "This request method is not supported.",
+                "Error message mismatch"
+        );
     }
 }

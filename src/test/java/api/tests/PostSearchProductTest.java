@@ -10,16 +10,17 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class GetAllProductsTest extends BaseApiTest {
+public class PostSearchProductTest extends BaseApiTest {
 
-    @Test(priority = 1, description = "API 1: GET all products list")
+    @Test(priority = 5, description = "API 5: POST to search product")
     @Severity(SeverityLevel.NORMAL)
-    @Description("Verify that GET /productsList returns 200 and contains a list of products.")
-    public void getAllProducts() {
+    @Description("Verify that POST /searchProduct returns 200 and returns a list of products matching the search query.")
+    public void postSearchProduct() {
 
         Response response = given()
+                .formParam("search_product", "top")
                 .when()
-                .get("/productsList")
+                .post("/searchProduct")
                 .then()
                 .statusCode(200)
                 .extract()
@@ -29,5 +30,6 @@ public class GetAllProductsTest extends BaseApiTest {
 
         Assert.assertEquals(js.getInt("responseCode"), 200, "Response code should be 200");
         Assert.assertNotNull(js.getList("products"), "Products list should not be null");
+        Assert.assertTrue(js.getList("products").size() > 0, "Search should return at least one product");
     }
 }
