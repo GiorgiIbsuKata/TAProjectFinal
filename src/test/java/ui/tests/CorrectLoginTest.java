@@ -20,8 +20,8 @@ public class CorrectLoginTest extends BaseUiTest {
 
         Assert.assertTrue(signup.isLoginFormVisible(), "'Login to your account' is NOT visible");
 
-        signup.enterLoginEmail("iamtest@testing.test");
-        signup.enterLoginPassword("iwillfinallyendtask2");
+        signup.enterLoginEmail("accountfortest@project.final");
+        signup.enterLoginPassword("shouldwork");
 
         signup.clickLoginButton();
 

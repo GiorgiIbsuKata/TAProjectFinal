@@ -18,7 +18,7 @@ public class LogoutUserTest extends BaseUiTest {
         home.clickSignupLogin();
         Assert.assertTrue(signup.isLoginFormVisible());
 
-        signup.enterLoginEmail("correct@email.taproject2");
+        signup.enterLoginEmail("testproject2@itestthis.com");
         signup.enterLoginPassword("password");
         signup.clickLoginButton();
 

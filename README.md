@@ -17,6 +17,29 @@ This entire project — including **UI tests 1–10** and **API tests 1–10** �
 - Page Object Model (POM)
 
 ---
+## ▶️ How to Run Tests & Generate Allure Reports
+
+To execute the full test suite and generate Allure results, run the following commands from the project root:
+
+### **1. Run all tests**
+
+mvn clean test
+
+This command executes **all UI and API tests** and automatically generates the Allure results folder: target/allure-results
+
+
+### **2. Generate and open the Allure report**
+
+mvn allure:serve or allure serve target/allure-results
+
+This launches an interactive Allure dashboard in your browser with:
+- Test results
+- Steps
+- Logs
+- Attachments
+- Screenshots (for failed tests)
+
+---
 
 ## 🧪 UI Test Notes (IMPORTANT)
 
@@ -29,6 +52,8 @@ Specifically:
 
 These tests will fail if the email does not exist on AutomationExercise.com.
 
+In the Login Test, I included a **valid account**, and it *should* work — however, AutomationExercise sometimes **deletes accounts randomly**, so the login may fail even with correct credentials.  
+If this happens, simply **create a new account manually** and update the test data.
 ---
 
 ### 📝 Registration Tests
@@ -56,4 +81,4 @@ All tests have been individually validated and **pass when run alone**, but runn
 ### API Task 7 – `postVerifyLoginValid`
 For **API task 7**, you may need to **create an account first**.
 
-The email/password in the code *should* work, but AutomationExercise sometimes **deletes accounts under certain conditions**, so you might need to create a new account before running this test.
+The email/password in the code *should* work, i tested it many times and its fine. But AutomationExercise sometimes **deletes accounts under certain conditions**, so you might need to create a new account before running this test.
